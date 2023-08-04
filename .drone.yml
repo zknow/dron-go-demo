@@ -10,7 +10,7 @@ steps:
       from_secret: username
   commands:
   - go build
-  - go run
+  - go run .
   - echo $USERNAME
   - echo $USERNAME > b.txt
   - cat b.txt
