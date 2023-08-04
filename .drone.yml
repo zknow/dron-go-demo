@@ -5,7 +5,8 @@ name: default
 trigger:
   event:
     - push
-    
+    - custom
+
 steps:
 - name: backend
   image: golang:1.13-alpine
