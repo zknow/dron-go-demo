@@ -12,5 +12,5 @@ steps:
   - go build
   - go run .
   - echo $USERNAME
-  - echo $USERNAME > b.txt
-  - cat b.txt
+  - echo $USERNAME > a.txt
+  - cat a.txt
