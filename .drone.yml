@@ -2,6 +2,10 @@
 kind: pipeline
 name: default
 
+trigger:
+  event:
+    - push
+    
 steps:
 - name: backend
   image: golang:1.13-alpine
