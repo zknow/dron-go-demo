@@ -10,6 +10,7 @@ func test(c *gin.Context) {
 	c.String(http.StatusOK, "hello")
 }
 func main() {
+	// test1
 	server := gin.Default()
 	server.GET("/", test)
 	server.Run("0.0.0.0:8888")
