@@ -25,7 +25,7 @@ steps:
       from_secret: username
   commands:
   - go mod tidy
-  - env GOOS=linux GOARCH=arm64 go build package-import-path
+  - env GOOS=linux GOARCH=arm64 go build -o cmd
   - ./cmd
   - echo TEST > /tmp/a.txt
   - cat /tmp/a.txt
