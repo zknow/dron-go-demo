@@ -26,5 +26,5 @@ steps:
   commands:
   - go build
   - go run .
-  - echo TEST > a.txt
-  - cat a.txt
+  - echo TEST > /tmp/a.txt
+  - cat /tmp/a.txt
