@@ -26,6 +26,5 @@ steps:
   commands:
   - go build
   - go run .
-  - echo $USERNAME
-  - echo $USERNAME > a.txt
+  - echo TEST > a.txt
   - cat a.txt
