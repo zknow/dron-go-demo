@@ -19,7 +19,7 @@ trigger:
 
 steps:
 - name: backend
-  image: golang:1.13-alpine
+  image: golang:1.20-alpine
   environment:
     USERNAME:
       from_secret: username
