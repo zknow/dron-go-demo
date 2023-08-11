@@ -24,7 +24,7 @@ steps:
     USERNAME:
       from_secret: username
   commands:
-  - go build
+  - go mod tidy
   - go run .
   - echo TEST > /tmp/a.txt
   - cat /tmp/a.txt
