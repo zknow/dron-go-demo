@@ -29,5 +29,5 @@ steps:
   - go run .
   - echo TEST > /tmp/a.txt
   - cat /tmp/a.txt
-  - echo "Contents of a.txt:" >> /drone/src/.drone_output
-  - cat /tmp/a.txt >> /drone/src/.drone_output
+ ports:
+    - "8888:8888"

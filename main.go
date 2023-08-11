@@ -12,5 +12,5 @@ func test(c *gin.Context) {
 func main() {
 	server := gin.Default()
 	server.GET("/", test)
-	server.Run(":8888")
+	server.Run("0.0.0.0:8888")
 }
