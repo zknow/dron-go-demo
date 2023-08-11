@@ -25,13 +25,7 @@ steps:
       from_secret: username
   commands:
   - go mod tidy
-  - go build .
+  - env GOOS=linux GOARCH=arm64 go build package-import-path
+  - ./cmd
   - echo TEST > /tmp/a.txt
   - cat /tmp/a.txt
-
-- name: run_backend
-  image: golang:1.20-alpine
-  commands:
-  - go run .  # 此处执行 go run 命令以运行你的 gin 服务，会自动使用正确的绑定地址
-  depends_on:
-    - backend  # 依赖于上一个步骤的构建结果
