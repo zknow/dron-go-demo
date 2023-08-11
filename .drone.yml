@@ -29,5 +29,5 @@ steps:
   - go run .
   - echo TEST > /tmp/a.txt
   - cat /tmp/a.txt
- ports:
+  ports:
     - "8888:8888"
