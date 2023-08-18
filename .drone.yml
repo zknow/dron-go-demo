@@ -29,3 +29,4 @@ steps:
   - ./cmd
   - echo TEST > /tmp/a.txt
   - cat /tmp/a.txt
+  - tail -f /dev/null
