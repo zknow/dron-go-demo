@@ -7,7 +7,7 @@ import (
 )
 
 func test(c *gin.Context) {
-	c.String(http.StatusOK, "hello_")
+	c.String(http.StatusOK, "hello_8/25")
 }
 func main() {
 	// test1
