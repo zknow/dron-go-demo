@@ -23,18 +23,15 @@ steps:
   environment:
     USERNAME:
       from_secret: username
+  ports:
+  - "8888:8888"  # Map container's 8888 port to host's 8888 port
   commands:
   - go mod tidy
   - env GOOS=linux GOARCH=arm64 go build -o cmd
   - ./cmd
-  - echo TEST > /tmp/a.txt
-  - cat /tmp/a.txt
-  - tail -f /dev/null
+  # - echo TEST > /tmp/a.txt
+  # - cat /tmp/a.txt
+  # - tail -f /dev/null
   volumes:
   - name: data-volume
     path: /tmp  # Mount /tmp directory inside the container
-
-# volumes:
-# - name: data-volume
-#   host:
-#     path: C:\data  # Mount /data directory from the host machine
