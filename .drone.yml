@@ -19,7 +19,6 @@ steps:
   commands:
   - go mod tidy
   - env GOOS=linux GOARCH=arm64 go build -o go-cmd
-  - cp go-cmd /drone/src/  # Copy the binary to a shared volume
   # - echo TEST > /tmp/a.txt
   # - cat /tmp/a.txt
   # - tail -f /dev/null
