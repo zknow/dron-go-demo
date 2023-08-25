@@ -18,8 +18,8 @@ steps:
   image: golang:1.20-alpine
   commands:
   - go mod tidy
-  - env GOOS=linux GOARCH=arm64 go build -o cmd
-  - cp cmd /drone/src/  # Copy the binary to a shared volume
+  - env GOOS=linux GOARCH=arm64 go build -o go-cmd
+  - cp go-cmd /drone/src/  # Copy the binary to a shared volume
   # - echo TEST > /tmp/a.txt
   # - cat /tmp/a.txt
   # - tail -f /dev/null
@@ -27,7 +27,7 @@ steps:
 services:
   - name: golang-server
     image: golang:1.20-alpine
-    command: ["/drone/src/cmd"]  # Run the binary from the shared volume
+    command: ["/drone/src/go-cmd"]  # Run the binary from the shared volume
     volumes:
       - name: data-volume
         path: /tmp
