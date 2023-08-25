@@ -27,6 +27,3 @@ steps:
   - go mod tidy
   - env GOOS=linux GOARCH=arm64 go build -o cmd
   - ./cmd
-  - echo TEST > /tmp/a.txt
-  - cat /tmp/a.txt
-  - tail -f /dev/null
