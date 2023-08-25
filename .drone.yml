@@ -22,7 +22,7 @@ steps:
   image: golang:1.20-alpine
   commands:
   - go mod tidy
-  - env GOOS=linux GOARCH=arm64 go build -o cmd
+  # - env GOOS=linux GOARCH=arm64 go build -o cmd
   # - echo TEST > /tmp/a.txt
   # - cat /tmp/a.txt
   # - tail -f /dev/null
@@ -32,5 +32,5 @@ services:
     image: golang:1.20-alpine
     ports:
       - "8888:8888"
-    entrypoint: ./cmd
+    entrypoint: go run .go
     restart: always
