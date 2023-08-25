@@ -30,7 +30,9 @@ steps:
 services:
   - name: golang-server
     image: golang:1.20-alpine
+    command: ["go", "run", "main.go"]
     ports:
       - "8888:8888"
-    entrypoint: go run .go
-    restart: always
+    volumes:
+      - name: data-volume
+        path: /tmp
