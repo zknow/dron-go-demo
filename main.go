@@ -24,7 +24,7 @@ func runGin() {
 
 func wlog(txt string) {
 
-	log.Println(txt)
+	// log.Println(txt)
 	err1 := os.WriteFile("/tmp/data.txt", []byte(txt), 777)
 	if err1 != nil {
 		log.Fatal(err1)
