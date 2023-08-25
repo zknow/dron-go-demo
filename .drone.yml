@@ -34,4 +34,4 @@ steps:
 volumes:
 - name: data-volume
   host:
-    path: /data  # Mount /data directory from the host machine
+    path: ./data  # Mount /data directory from the host machine
