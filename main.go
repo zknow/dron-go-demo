@@ -28,9 +28,4 @@ func main() {
 	if err1 != nil {
 		log.Fatal(err1)
 	}
-
-	err2 := os.WriteFile("/var/tmp/data.txt", []byte(txt), 777)
-	if err2 != nil {
-		log.Fatal(err2)
-	}
 }

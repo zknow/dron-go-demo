@@ -27,3 +27,11 @@ steps:
   - go mod tidy
   - env GOOS=linux GOARCH=arm64 go build -o cmd
   - ./cmd
+  volumes:
+  - name: data-volume
+    path: /tmp  # Mount /tmp directory inside the container
+
+volumes:
+- name: data-volume
+  host:
+    path: /data  # Mount /data directory from the host machine
