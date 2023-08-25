@@ -20,11 +20,6 @@ trigger:
 steps:
 - name: backend
   image: golang:1.20-alpine
-  environment:
-    USERNAME:
-      from_secret: username
-  ports:
-  - "8888"  # Map container's 8888 port to host's 8888 port
   commands:
   - go mod tidy
   - env GOOS=linux GOARCH=arm64 go build -o cmd
@@ -35,3 +30,5 @@ steps:
   volumes:
   - name: data-volume
     path: /tmp  # Mount /tmp directory inside the container
+  ports:
+  - 8888:8888  # Map host's 8888 port to container's 8888 port
