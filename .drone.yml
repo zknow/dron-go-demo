@@ -1,4 +1,6 @@
 #https://docs.drone.io/pipeline/docker/syntax/trigger/
+
+#drone.yml
 kind: pipeline
 type: docker
 name: default
@@ -14,19 +16,7 @@ trigger:
     - tag
 
 steps:
-- name: backend
-  image: golang:1.20-alpine
+- name: Start Docker Compose
+  image: docker/compose:1.29.2  # 使用Docker Compose的合适版本
   commands:
-  - go mod tidy
-  - env GOOS=linux GOARCH=arm64 go build -o go-cmd
-  # - echo TEST > /tmp/a.txt
-  # - cat /tmp/a.txt
-  # - tail -f /dev/null
-
-services:
-  - name: golang-server
-    image: golang:1.20-alpine
-    command: ["/drone/src/go-cmd"]  # Run the binary from the shared volume
-    volumes:
-      - name: data-volume
-        path: /tmp
+    - docker-compose -f docker-compose.yml up -d  # 请将路径替换为你的docker-compose.yml文件的实际路径

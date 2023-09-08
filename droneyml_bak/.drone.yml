@@ -1,0 +1,34 @@
+#https://docs.drone.io/pipeline/docker/syntax/trigger/
+
+#drone.yml
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
+    - main
+    - master
+    - feature/*
+  event:
+    - push
+    - pull_request
+    - tag
+
+steps:
+- name: backend
+  image: golang:1.20-alpine
+  commands:
+  - go mod tidy
+  - env GOOS=linux GOARCH=arm64 go build -o go-cmd
+  # - echo TEST > /tmp/a.txt
+  # - cat /tmp/a.txt
+  - tail -f /dev/null
+
+services:
+  - name: golang-server
+    image: golang:1.20-alpine
+    command: ["/drone/src/go-cmd"]  # Run the binary from the shared volume
+    volumes:
+      - name: data-volume
+        path: /tmp
