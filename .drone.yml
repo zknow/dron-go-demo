@@ -2,7 +2,7 @@
 
 #drone.yml
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 trigger:
@@ -17,6 +17,5 @@ trigger:
 
 steps:
   - name: build
-    image: windows:latest  # 指定 Windows 镜像
     commands:
       - build.bat
