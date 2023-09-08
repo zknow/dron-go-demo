@@ -20,5 +20,4 @@ steps:
     image: alpine:3.14
     commands:
       - chmod +x build.sh
-      - echo $pwd
-      - sh build.sh
+      - sudo sh build.sh
