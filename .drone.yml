@@ -20,4 +20,4 @@ steps:
     image: alpine:3.14
     commands:
       - chmod +x build.sh
-      - sudo sh build.sh
+      - /bin/ash build.sh
