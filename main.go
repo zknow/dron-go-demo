@@ -11,7 +11,7 @@ import (
 
 func index(c *gin.Context) {
 	t := time.Now().UTC().Add(time.Hour * 8)
-	txt := "Ping " + t.String()
+	txt := "Ping  - " + t.String()
 	c.String(http.StatusOK, txt)
 	wlog(txt)
 }
