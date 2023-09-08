@@ -22,4 +22,4 @@ trigger:
 steps:
   - name: build
     commands:
-      - docker compose up -d
+      - docker-compose up -d
