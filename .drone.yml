@@ -17,9 +17,6 @@ trigger:
 
 steps:
   - name: build
-    image: alpine:latest
+    image: windows:latest  # 指定 Windows 镜像
     commands:
-      - apk update
-      - apk add bash  # 如果你的 build.sh 需要 bash
-      - chmod +x build.sh
-      - ./build.sh
+      - build.bat
