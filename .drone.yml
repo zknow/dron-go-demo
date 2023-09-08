@@ -16,6 +16,11 @@ trigger:
     - tag
 
 steps:
+  - name: install-sudo
+    image: alpine:3.14
+    commands:
+      - apk add --no-cache sudo
+
   - name: build
     image: alpine:3.14
     commands:
