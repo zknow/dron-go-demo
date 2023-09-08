@@ -20,6 +20,6 @@ trigger:
     - tag
 
 steps:
-  - name: build
+  - name: build-docker
     commands:
       - docker-compose up -d
