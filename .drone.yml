@@ -2,7 +2,7 @@
 
 #drone.yml
 kind: pipeline
-type: exec
+type: docker
 name: default
 
 platform:
@@ -20,6 +20,12 @@ trigger:
     - tag
 
 steps:
-  - name: build-docker
-    commands:
-      - docker-compose up -d
+  - name: deploy
+    image: docker:20
+    pull: true
+    settings:
+      script:
+        - docker build -t demo . --no-cache
+        - echo "image running"
+        - docker run -p 8088:8088 -d demo
+        - echo "run success"

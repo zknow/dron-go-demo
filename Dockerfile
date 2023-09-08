@@ -1,10 +1,13 @@
-FROM golang:1.20-alpine
+FROM golang:latest
 
 WORKDIR /app
 
+COPY go.mod go.sum ./
+
+RUN go mod tidy
+
 COPY . .
 
-RUN go mod tidy && \
-    go build -o myGolangApp
+RUN go build -o main .
 
-ENTRYPOINT ./myGolangApp
+CMD ["./main"]
