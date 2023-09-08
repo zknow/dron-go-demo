@@ -19,4 +19,5 @@ steps:
   - name: build
     image: alpine:3.14
     commands:
-      - /bin/bash build.sh
+      - chmod +x build.sh
+      - ./build.sh
