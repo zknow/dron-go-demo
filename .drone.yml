@@ -1,6 +1,3 @@
-#https://docs.drone.io/pipeline/docker/syntax/trigger/
-
-#drone.yml
 kind: pipeline
 type: docker
 name: default
@@ -20,12 +17,25 @@ trigger:
     - tag
 
 steps:
-  - name: deploy
+  - name: build
+    image: golang:1.20-alpine
+    pull: true
+    commands:
+      - go build -o myapp
+      - cp myapp /workspace/myapp
+
+  - name: create-docker-image
     image: docker:20
     pull: true
     settings:
-      script:
-        - docker build -t demo . --no-cache
-        - echo "image running"
-        - docker run -p 8088:8088 -d demo
-        - echo "run success"
+      dockerfile: |
+        FROM alpine:latest
+        COPY myapp /usr/local/bin/myapp
+        CMD ["myapp"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  - name: run
+    image: alpine:latest
+    commands:
+      - /usr/local/bin/myapp
