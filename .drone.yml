@@ -17,8 +17,9 @@ trigger:
 
 steps:
 - name: Start Docker Compose
-  image: docker/compose:1.29.2  # 使用Docker Compose的合适版本
+  image: docker/compose:1.29.2
   volumes:
-  - /var/run/docker.sock:/var/run/docker.sock
+    - name: docker-socket
+      path: /var/run/docker.sock
   commands:
-    - docker-compose -f docker-compose.yml up -d 
+    - docker-compose -f docker-compose.yml up -d
