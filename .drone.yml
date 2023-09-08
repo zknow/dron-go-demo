@@ -18,7 +18,6 @@ trigger:
 steps:
 - name: Start Docker Compose
   image: docker:20.10
-  volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+  volumes: /var/run/docker.sock:/var/run/docker.sock
   commands:
     - docker-compose -f ./docker-compose.yml up -d
