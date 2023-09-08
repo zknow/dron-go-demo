@@ -16,12 +16,10 @@ trigger:
     - tag
 
 steps:
-  - name: install-sudo
-    image: alpine:3.14
-    commands:
-      - apk add --no-cache sudo
-
   - name: build
-    image: alpine:3.14
+    image: alpine:latest
     commands:
-      - /bin/ash build.sh
+      - apk update
+      - apk add bash  # 如果你的 build.sh 需要 bash
+      - chmod +x build.sh
+      - ./build.sh
