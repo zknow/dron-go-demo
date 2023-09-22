@@ -1,13 +1,8 @@
 #https://docs.drone.io/pipeline/docker/syntax/trigger/
 
-#drone.yml
 kind: pipeline
-type: exec
+type: docker
 name: default
-
-# platform:
-#   os: linux
-#   arch: amd64
 
 trigger:
   branch:
@@ -20,9 +15,16 @@ trigger:
     - tag
 
 steps:
-- name: build
-  commands:
-  - docker build -t demo . --no-cache
-  - echo "image running"
-  - docker run -p 8088:8088 -d demo
-  - echo "run success"
+  - name: docker-build
+    image: docker:dind
+    volumes:
+      - name: docker-sock
+        path: /var/run/docker.sock
+    commands:
+      - docker ps
+      - docker build -t demo . --no-cache
+      - docker run -p 8088:8088 --name go-server -d demo
+volumes:
+  - name: docker-sock
+    host:
+      path: /var/run/docker.sock
