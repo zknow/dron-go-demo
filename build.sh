@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -n "$(docker ps -q -f name=<container_name>)" ]; then
+if [ -n "$(docker ps -q -f name=go-server)" ]; then
     echo "go-server容器存在"
     docker stop go-server
     docker rm go-server
