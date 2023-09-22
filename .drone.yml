@@ -22,6 +22,8 @@ steps:
         path: /var/run/docker.sock
     commands:
       - docker ps
+      - docker stop go-server
+      - docker rm go-server
       - docker build -t demo . --no-cache
       - docker run -p 8088:8088 --name go-server -d demo
 volumes:
