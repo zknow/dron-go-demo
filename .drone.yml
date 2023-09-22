@@ -23,10 +23,6 @@ steps:
     commands:
       - docker ps
       - sh ./build.sh
-      # - docker stop go-server
-      # - docker rm go-server
-      # - docker build -t demo . --no-cache
-      # - docker run -p 8088:8088 --name go-server -d demo
 volumes:
   - name: docker-sock
     host:

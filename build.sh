@@ -1,9 +1,11 @@
 #!/bin/bash
 
-if [ -n "$(docker ps -q -f name=go-server)" ]; then
-    echo "go-server容器存在，開始關閉舊容器"
-    docker stop go-server
-    docker rm go-server
+containerName="go-server"
+
+if [ -n "$(docker ps -q -f name=$containerName)" ]; then
+    echo $containerName + " 容器存在，開始關閉舊容器"
+    docker stop $containerName
+    docker rm $containerName
 fi
 
 docker build -t demo . --no-cache
