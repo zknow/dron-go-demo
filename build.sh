@@ -9,4 +9,4 @@ if [ -n "$(docker ps -q -f name=$containerName)" ]; then
 fi
 
 docker build -t demo . --no-cache
-docker run -p 8088:8088 --name $containerName -d demo
+docker run -p 12002:8080 --name $containerName -d demo
